@@ -1,5 +1,11 @@
 package valueobject
 
 type BaseId[T any] struct {
-	value T
+	Value T
+}
+
+func NewBaseId[T any](value T) *BaseId[T] {
+	return &BaseId[T]{
+		Value: value,
+	}
 }

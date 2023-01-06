@@ -6,6 +6,8 @@ type Money struct {
 	Amount decimal.Decimal
 }
 
+var ZERO = NewMoney(0)
+
 func NewMoney(amount float64) *Money {
 	return &Money{Amount: decimal.NewFromFloat(amount).Round(2)}
 }
@@ -16,6 +18,10 @@ func NewMoneyFromDecimal(amount decimal.Decimal) *Money {
 
 func (m *Money) GreaterThanZero() bool {
 	return m.Amount.GreaterThan(decimal.Zero)
+}
+
+func (m *Money) Equals(otherMoney *Money) bool {
+	return m.Amount.Equals(otherMoney.Amount)
 }
 
 func (m *Money) GreaterThan(otherMoney *Money) bool {
@@ -32,7 +38,7 @@ func (m *Money) Subtract(otherMoney *Money) *Money {
 	return NewMoneyFromDecimal(result)
 }
 
-func (m *Money) Multiple(multiplier int64) *Money {
+func (m *Money) Multiply(multiplier int64) *Money {
 	result := m.Amount.Mul(decimal.NewFromInt(multiplier))
 	return NewMoneyFromDecimal(result)
 }
