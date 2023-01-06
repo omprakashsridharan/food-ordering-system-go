@@ -1,12 +1,15 @@
 package event
 
-import "time"
+import (
+	"order-domain-core/entity"
+	"time"
+)
 
 type OrderPaidEvent struct {
 	*OrderEvent
 }
 
-func NewOrderPaidEvent(createdAt time.Time) *OrderPaidEvent {
-	orderEvent := NewOrderEvent(createdAt)
+func NewOrderPaidEvent(order *entity.Order, createdAt time.Time) *OrderPaidEvent {
+	orderEvent := NewOrderEvent(order, createdAt)
 	return &OrderPaidEvent{OrderEvent: orderEvent}
 }
