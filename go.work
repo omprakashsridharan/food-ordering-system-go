@@ -2,5 +2,6 @@ go 1.19
 
 use (
 	./ordering-service/order-domain/order-domain-core
+	./ordering-service/order-domain/order-application-service
 	common-domain
 )
