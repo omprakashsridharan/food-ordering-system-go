@@ -1,7 +1,8 @@
 go 1.19
 
 use (
-	./ordering-service/order-domain/order-domain-core
+	./infrastructure
 	./ordering-service/order-domain/order-application-service
+	./ordering-service/order-domain/order-domain-core
 	common-domain
 )
