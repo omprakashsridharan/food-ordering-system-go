@@ -1,17 +1,19 @@
 package event
 
 import (
-	"common-domain/event"
 	"order-domain-core/entity"
 	"time"
 )
 
 type OrderEvent struct {
-	*event.DomainEvent[entity.Order]
 	*entity.Order
+	CreatedAt time.Time
+}
+
+func (o OrderEvent) GetCreatedAt() time.Time {
+	return o.CreatedAt
 }
 
 func NewOrderEvent(order *entity.Order, createdAt time.Time) *OrderEvent {
-	domainEvent := event.NewDomainEvent[entity.Order](createdAt)
-	return &OrderEvent{DomainEvent: domainEvent, Order: order}
+	return &OrderEvent{Order: order, CreatedAt: createdAt}
 }
