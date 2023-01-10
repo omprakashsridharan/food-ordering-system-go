@@ -4,5 +4,6 @@ use (
 	./infrastructure
 	./ordering-service/order-domain/order-application-service
 	./ordering-service/order-domain/order-domain-core
+	./ordering-service/order-application
 	common-domain
 )

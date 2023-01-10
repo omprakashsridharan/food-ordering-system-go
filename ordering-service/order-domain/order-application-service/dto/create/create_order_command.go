@@ -6,9 +6,9 @@ import (
 )
 
 type CreateOrderCommand struct {
-	CustomerId   uuid.UUID
-	RestaurantId uuid.UUID
-	Price        decimal.Decimal
-	Address      OrderAddress
-	Items        []OrderItem
+	CustomerId   uuid.UUID       `json:"customer_id"`
+	RestaurantId uuid.UUID       `json:"restaurant_id"`
+	Price        decimal.Decimal `json:"price"`
+	Address      OrderAddress    `json:"address"`
+	Items        []OrderItem     `json:"items"`
 }

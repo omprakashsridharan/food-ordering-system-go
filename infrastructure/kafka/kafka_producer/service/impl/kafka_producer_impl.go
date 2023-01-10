@@ -1,10 +1,11 @@
 package impl
 
 import (
-	"github.com/confluentinc/confluent-kafka-go/kafka"
-	kafkaAvro "github.com/mycujoo/go-kafka-avro/v2"
 	"infrastructure/kafka/kafka_producer/exception"
 	"net/url"
+
+	"github.com/confluentinc/confluent-kafka-go/kafka"
+	kafkaAvro "github.com/mycujoo/go-kafka-avro/v2"
 )
 
 type KafkaProducerImpl[K, V any] struct {
@@ -26,6 +27,7 @@ func NewKafkaProducerImpl[K, V any](config kafka.ConfigMap, schemaRegistryUrl ur
 
 func (k KafkaProducerImpl[K, V]) Send(key K, message V) error {
 	err := k.Produce(key, message, nil)
+	defer k.Close()
 	if err != nil {
 		return exception.KafkaProducerException("Error while sending message to kafka topic")
 	}
