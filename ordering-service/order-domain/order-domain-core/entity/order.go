@@ -20,7 +20,7 @@ type Order struct {
 }
 
 func NewOrder(orderId commonValueObject.OrderId, customerId commonValueObject.CustomerId, restaurantId commonValueObject.RestaurantId, streetAddress orderDomainValueObject.StreetAddress, price commonValueObject.Money, items []OrderItem, trackingId orderDomainValueObject.TrackingId, orderStatus commonValueObject.OrderStatus, failureMessages []string) *Order {
-	aggregateRoot := entity.NewAggregateRoot[commonValueObject.OrderId](orderId)
+	aggregateRoot := entity.NewAggregateRoot(orderId)
 	return &Order{AggregateRoot: aggregateRoot, CustomerId: customerId, RestaurantId: restaurantId, StreetAddress: streetAddress, Price: price, Items: items, TrackingId: trackingId, OrderStatus: orderStatus, FailureMessages: failureMessages}
 }
 
